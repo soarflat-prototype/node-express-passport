@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "nf run nodemon ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
@@ -16,9 +16,11 @@
     "passport": "^0.4.0",
     "passport-twitter": "^1.0.4",
     "pug": "~2.0.0-beta11",
+    "pug-bootstrap": "0.0.15",
     "serve-favicon": "~2.4.2"
   },
   "devDependencies": {
+    "foreman": "^2.0.0",
     "nodemon": "^1.12.1"
   }
 }
