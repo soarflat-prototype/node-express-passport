@@ -16,8 +16,8 @@ passport.serializeUser((user, done) => {
 // ユーザー情報をデシリアライズする
 // デシリアライズとは、保存してある情報を取り出したり受け取ったりして
 // 各インスタンスを再生成すること
-passport.deserializeUser((id, done) => {
-  User.findOne({ _id: id.doc._id }, (err, user) => {
+passport.deserializeUser((user, done) => {
+  User.findOne({ _id: user._id }, (err, user) => {
     done(err, user);
   });
 });

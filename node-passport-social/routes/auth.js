@@ -13,13 +13,15 @@ router.get('/logout', (req, res) => {
   res.redirect('/');
 });
 
-// TWITTER ROUTER
+// 認証のためにユーザーをTwitterにリダイレクトさせる
+// 認証が完了したら/twitter/callbackにリダイレクトさせる
 router.get('/twitter', passportTwitter.authenticate('twitter'));
 
-router.get('/twitter/callback',
-  passportTwitter.authenticate('twitter', { failureRedirect: 'login' }), (req, res) => {
-    // 認証が成功したらホームへリダイレクト
-    res.redirect('/')
-  });
+// 認証が成功（アクセスが許可されたら）/にリダイレクト
+// 認証が失敗（アクセスが許可されなかったら）/loginにリダイレクト
+router.get('/twitter/callback', passportTwitter.authenticate('twitter', {
+  successRedirect: '/users',
+  failureRedirect: '/auth/login'
+}));
 
 module.exports = router;
